@@ -35,9 +35,12 @@ process INDEX {
 }
 
 process QUANTIFICATION {
+    tag "salmon quant on $sample_id"
+    cpus 4
+
     input:
     path salmon_index
-    tuple val(sample_id), path(reads)
+    tuple val(sample_id), path(reads) // for .fromFilePairs
 
     output:
     path "$sample_id"
